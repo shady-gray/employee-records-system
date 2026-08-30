@@ -1,0 +1,1 @@
+console.log("Employee Records System loaded successfully.");

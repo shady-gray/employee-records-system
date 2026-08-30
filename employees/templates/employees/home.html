@@ -1,0 +1,27 @@
+{% extends "employees/base.html" %}
+
+{% block title %}Home | Employee Records{% endblock %}
+
+{% block content %}
+
+<section class="hero">
+    <h2>Employee Records System</h2>
+    <p>
+        Welcome to the employee management portal for
+        {{ company_name }}.
+    </p>
+
+    <a class="button" href="{% url 'employees:employee_list' %}">
+        View Employees
+    </a>
+</section>
+
+<section class="summary-card">
+    <h3>Employee Overview</h3>
+    <p>
+        Total employees currently registered:
+        <strong>{{ total_employees }}</strong>
+    </p>
+</section>
+
+{% endblock %}

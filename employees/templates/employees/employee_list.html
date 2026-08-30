@@ -1,0 +1,49 @@
+{% extends "employees/base.html" %}
+
+{% block title %}{{ page_title }} | {{ company_name }}{% endblock %}
+
+{% block content %}
+
+<div class="page-heading">
+    <h2>{{ page_title }}</h2>
+    <p>View all employees registered in the system.</p>
+</div>
+
+<div class="employee-grid">
+
+    {% for employee in employees %}
+
+    <article class="employee-card">
+        <h3>{{ employee.full_name }}</h3>
+
+        <p>
+            <strong>Employee ID:</strong>
+            {{ employee.employee_id }}
+        </p>
+
+        <p>
+            <strong>Department:</strong>
+            {{ employee.department }}
+        </p>
+
+        <p>
+            <strong>Job Title:</strong>
+            {{ employee.job_title }}
+        </p>
+
+        <a
+            class="button"
+            href="{% url 'employees:employee_detail' employee.id %}">
+            View Details
+        </a>
+    </article>
+
+    {% empty %}
+
+    <p>No employees have been registered yet.</p>
+
+    {% endfor %}
+
+</div>
+
+{% endblock %}
