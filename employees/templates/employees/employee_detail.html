@@ -1,0 +1,51 @@
+{% extends "employees/base.html" %}
+
+{% block title %}{{ employee.full_name }} | {{ company_name }}{% endblock %}
+
+{% block content %}
+
+<div class="page-heading">
+    <h2>Employee Details</h2>
+</div>
+
+<section class="detail-card">
+
+    <h3>{{ employee.full_name }}</h3>
+
+    <div class="detail-row">
+        <span>Employee ID</span>
+        <strong>{{ employee.employee_id }}</strong>
+    </div>
+
+    <div class="detail-row">
+        <span>Department</span>
+        <strong>{{ employee.department }}</strong>
+    </div>
+
+    <div class="detail-row">
+        <span>Job Title</span>
+        <strong>{{ employee.job_title }}</strong>
+    </div>
+
+    <div class="detail-row">
+        <span>Email</span>
+        <strong>{{ employee.email }}</strong>
+    </div>
+
+    <div class="detail-row">
+        <span>Phone</span>
+        <strong>{{ employee.phone }}</strong>
+    </div>
+
+    <div class="detail-row">
+        <span>Date Joined</span>
+        <strong>{{ employee.date_joined }}</strong>
+    </div>
+
+    <a class="button" href="{% url 'employees:employee_list' %}">
+        Back to Employees
+    </a>
+
+</section>
+
+{% endblock %}

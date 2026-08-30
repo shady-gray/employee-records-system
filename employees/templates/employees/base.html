@@ -1,0 +1,36 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Employee Records System{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'employees/style.css' %}">
+</head>
+
+<body>
+    <header class="site-header">
+        <div class="container">
+            <h1>Global Telecommunications and Venture Ltd.</h1>
+
+            <nav>
+                <a href="{% url 'employees:home' %}">Home</a>
+                <a href="{% url 'employees:employee_list' %}">Employees</a>
+            </nav>
+        </div>
+    </header>
+
+    <main class="container">
+        {% block content %}
+        {% endblock %}
+    </main>
+
+    <footer class="site-footer">
+        <div class="container">
+            <p>&copy; {{ company_name }} | Employee Records System</p>
+        </div>
+    </footer>
+
+    <script src="{% static 'employees/script.js' %}"></script>
+</body>
+</html>
