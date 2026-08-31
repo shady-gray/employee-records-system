@@ -4,46 +4,67 @@
 
 {% block content %}
 
-<div class="page-heading">
-    <h2>{{ page_title }}</h2>
-    <p>View all employees registered in the system.</p>
-</div>
+<div class="container py-4">
 
-<div class="employee-grid">
+    <div class="text-center mb-4">
+        <h2 class="fw-bold">{{ page_title }}</h2>
+        <p class="text-muted">View all employees registered in the system.</p>
+    </div>
 
-    {% for employee in employees %}
+    <div class="row g-4">
 
-    <article class="employee-card">
-        <h3>{{ employee.full_name }}</h3>
+        {% for employee in employees %}
 
-        <p>
-            <strong>Employee ID:</strong>
-            {{ employee.employee_id }}
-        </p>
+        <div class="col-md-6 col-lg-4">
 
-        <p>
-            <strong>Department:</strong>
-            {{ employee.department }}
-        </p>
+            <article class="card h-100 shadow-sm">
 
-        <p>
-            <strong>Job Title:</strong>
-            {{ employee.job_title }}
-        </p>
+                <div class="card-body">
 
-        <a
-            class="button"
-            href="{% url 'employees:employee_detail' employee.id %}">
-            View Details
-        </a>
-    </article>
+                    <h3 class="card-title h5">
+                        {{ employee.full_name }}
+                    </h3>
 
-    {% empty %}
+                    <p class="card-text">
+                        <strong>Employee ID:</strong>
+                        {{ employee.employee_id }}
+                    </p>
 
-    <p>No employees have been registered yet.</p>
+                    <p class="card-text">
+                        <strong>Department:</strong>
+                        {{ employee.department }}
+                    </p>
 
-    {% endfor %}
+                    <p class="card-text">
+                        <strong>Job Title:</strong>
+                        {{ employee.job_title }}
+                    </p>
+
+                    <a
+                        class="btn btn-primary"
+                        href="{% url 'employees:employee_detail' employee.id %}">
+                        View Details
+                    </a>
+
+                </div>
+
+            </article>
+
+        </div>
+
+        {% empty %}
+
+        <div class="col-12">
+            <div class="alert alert-info">
+                No employees have been registered yet.
+            </div>
+        </div>
+
+        {% endfor %}
+
+    </div>
 
 </div>
 
 {% endblock %}
+```
