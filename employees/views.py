@@ -1,5 +1,6 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from .models import Employee
+from .forms import EmployeeForm
 
 # Create your views here.
 def home(request):
@@ -26,3 +27,21 @@ def employee_detail(request, employee_id):
         "page_title": f"Employee Details - {employee.full_name}",
     }
     return render(request, "employees/employee_detail.html", context)
+
+def employee_create(request):
+    if request.method == "POST":
+        form = EmployeeForm(request.POST)
+
+        if form.is_valid():
+            form.save()
+            return redirect("employees:employee_list")
+    else:
+        form = EmployeeForm()
+
+    context = {
+        "form": form,
+        "page_title": "Add Employee",
+        "company_name": "Global Telecommunication and Ventures Ltd.",
+    }
+
+    return render(request, "employees/employee_form.html", context)

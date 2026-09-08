@@ -4,67 +4,60 @@
 
 {% block content %}
 
-<div class="container py-4">
+<section class="employee-list-section" aria-labelledby="employee-list-title">
 
-    <div class="text-center mb-4">
-        <h2 class="fw-bold">{{ page_title }}</h2>
-        <p class="text-muted">View all employees registered in the system.</p>
-    </div>
+    <header class="section-header">
+        <h2 id="employee-list-title">{{ page_title }}</h2>
+        <p>View all employees registered in the system.</p>
+    </header>
 
-    <div class="row g-4">
+    <div class="employee-grid">
 
         {% for employee in employees %}
 
-        <div class="col-md-6 col-lg-4">
+        <article class="employee-card">
 
-            <article class="card h-100 shadow-sm">
+            <div class="employee-card-content">
 
-                <div class="card-body">
+                <h3>{{ employee.full_name }}</h3>
 
-                    <h3 class="card-title h5">
-                        {{ employee.full_name }}
-                    </h3>
+                <p>
+                    <strong>Employee ID:</strong>
+                    {{ employee.employee_id }}
+                </p>
 
-                    <p class="card-text">
-                        <strong>Employee ID:</strong>
-                        {{ employee.employee_id }}
-                    </p>
+                <p>
+                    <strong>Department:</strong>
+                    {{ employee.department }}
+                </p>
 
-                    <p class="card-text">
-                        <strong>Department:</strong>
-                        {{ employee.department }}
-                    </p>
+                <p>
+                    <strong>Job Title:</strong>
+                    {{ employee.job_title }}
+                </p>
 
-                    <p class="card-text">
-                        <strong>Job Title:</strong>
-                        {{ employee.job_title }}
-                    </p>
+            </div>
 
-                    <a
-                        class="btn btn-primary"
-                        href="{% url 'employees:employee_detail' employee.id %}">
-                        View Details
-                    </a>
+            <div class="employee-card-actions">
+                <a
+                    class="button"
+                    href="{% url 'employees:employee_detail' employee.id %}">
+                    View Details
+                </a>
+            </div>
 
-                </div>
-
-            </article>
-
-        </div>
+        </article>
 
         {% empty %}
 
-        <div class="col-12">
-            <div class="alert alert-info">
-                No employees have been registered yet.
-            </div>
+        <div class="empty-state">
+            <p>No employees have been registered yet.</p>
         </div>
 
         {% endfor %}
 
     </div>
 
-</div>
+</section>
 
 {% endblock %}
-```
