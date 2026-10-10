@@ -1,0 +1,137 @@
+{% extends "employees/base.html" %}
+
+{% block title %}Add Employee | Employee Records System{% endblock %}
+
+{% block content %}
+
+<section class="form-section form-page" aria-labelledby="form-title">
+
+    <header class="form-page-header">
+        <div>
+            <p class="form-eyebrow">EMPLOYEE MANAGEMENT</p>
+            <h2 id="form-title">Add New Employee</h2>
+            <p class="form-description">
+                Enter the employee's details to get started.
+                All fields marked with * are required.
+            </p>
+        </div>
+
+        <a href="{% url 'employees:employee_list' %}"
+           class="form-back-link">
+            &larr; Employee Records
+        </a>
+    </header>
+
+    <div class="form-page-body">
+
+        <form id="dynamic-employee-form" novalidate>
+
+            <div id="employee-form-feedback"
+                 class="alert d-none"
+                 role="status"
+                 aria-live="polite"></div>
+
+            <div class="employee-form-grid">
+
+                <div class="employee-form-field">
+                    <label for="dynamic-employee-name">
+                        Full Name <span aria-hidden="true">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="dynamic-employee-name"
+                        name="full_name"
+                        class="form-input"
+                        placeholder="Enter full name"
+                        autocomplete="name"
+                        required
+                        aria-describedby="dynamic-employee-name-error">
+
+                    <small id="dynamic-employee-name-error"
+                           class="field-error"
+                           aria-live="polite"></small>
+                </div>
+
+                <div class="employee-form-field">
+                    <label for="dynamic-employee-email">
+                        Email Address <span aria-hidden="true">*</span>
+                    </label>
+
+                    <input
+                        type="email"
+                        id="dynamic-employee-email"
+                        name="email"
+                        class="form-input"
+                        placeholder="name@example.com"
+                        autocomplete="email"
+                        required
+                        aria-describedby="dynamic-employee-email-error">
+
+                    <small id="dynamic-employee-email-error"
+                           class="field-error"
+                           aria-live="polite"></small>
+                </div>
+
+                <div class="employee-form-field">
+                    <label for="dynamic-employee-department">
+                        Department <span aria-hidden="true">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="dynamic-employee-department"
+                        name="department"
+                        class="form-input"
+                        placeholder="e.g. Information Technology"
+                        required
+                        aria-describedby="dynamic-employee-department-error">
+
+                    <small id="dynamic-employee-department-error"
+                           class="field-error"
+                           aria-live="polite"></small>
+                </div>
+
+                <div class="employee-form-field">
+                    <label for="dynamic-employee-job-title">
+                        Job Title <span aria-hidden="true">*</span>
+                    </label>
+
+                    <input
+                        type="text"
+                        id="dynamic-employee-job-title"
+                        name="job_title"
+                        class="form-input"
+                        placeholder="e.g. Software Developer"
+                        required
+                        aria-describedby="dynamic-employee-job-title-error">
+
+                    <small id="dynamic-employee-job-title-error"
+                           class="field-error"
+                           aria-live="polite"></small>
+                </div>
+
+            </div>
+
+            <div class="employee-form-actions">
+                <button type="submit" class="form-submit">
+                    Add Employee
+                </button>
+
+                <a href="{% url 'employees:employee_list' %}"
+                   class="form-cancel">
+                    Cancel
+                </a>
+            </div>
+
+            <p class="form-security-note">
+                Required fields are checked before the information is accepted.
+            </p>
+
+        </form>
+
+    </div>
+
+</section>
+
+{% endblock %}

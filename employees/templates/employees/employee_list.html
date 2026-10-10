@@ -8,10 +8,34 @@
 
     <div class="text-center mb-4">
         <h2 class="fw-bold">{{ page_title }}</h2>
-        <p class="text-muted">View all employees registered in the system.</p>
+
+        <p class="text-muted">
+            View all employees registered in the system.
+        </p>
+
+        <p id="dashboard-message"
+           class="text-muted"
+           role="status"
+           aria-live="polite">
+            Displaying {{ employees|length }} employee record{{ employees|length|pluralize }}.
+        </p>
+
+        <button
+            type="button"
+            id="employee-toggle-button"
+            class="btn btn-outline-primary"
+            aria-expanded="true"
+            aria-controls="employee-list-container">
+            Hide Employees
+        </button>
+
+        <a href="{% url 'employees:employee_create' %}"
+           class="btn btn-primary mt-2">
+            Add Employee
+        </a>
     </div>
 
-    <div class="row g-4">
+    <div class="row g-4" id="employee-list-container">
 
         {% for employee in employees %}
 
@@ -54,7 +78,7 @@
 
         {% empty %}
 
-        <div class="col-12">
+        <div class="col-12" id="empty-employee-state">
             <div class="alert alert-info">
                 No employees have been registered yet.
             </div>
@@ -67,4 +91,3 @@
 </div>
 
 {% endblock %}
-```

@@ -26,3 +26,10 @@ def employee_detail(request, employee_id):
         "page_title": f"Employee Details - {employee.full_name}",
     }
     return render(request, "employees/employee_detail.html", context)
+
+def employee_create(request):
+    context = {
+        "company_name": "Global Telecommunication and Ventures Ltd.",
+        "page_title": "Add Employee",
+    }
+    return render(request, "employees/employee_form.html", context)
