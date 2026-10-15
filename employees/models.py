@@ -9,6 +9,7 @@ class Employee(models.Model):
     email = models.EmailField(unique=True)
     phone = models.CharField(max_length=20)
     date_joined = models.DateField()
+    date_created = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
         return f"{self.employee_id} - {self.full_name}"
